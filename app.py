@@ -36,6 +36,7 @@ def add_contact():
     name = request.form["name"]
     email = request.form["email"]
     phone = request.form["phone"]
+    location = request.form["location"]
     notes = request.form["notes"]
 
     with open(CSV_FILE, "a", newline="") as file:
@@ -45,6 +46,7 @@ def add_contact():
             name,
             email,
             phone,
+            location,
             notes
         ])
 

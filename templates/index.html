@@ -35,6 +35,14 @@
 
         <br><br>
 
+        <input 
+            type="text"
+            name="location"
+            placeholder="Location"
+        >
+
+        <br><br>
+
         <textarea
             name="notes"
             placeholder="Notes">
@@ -48,21 +56,23 @@
 
     </form>
 
+
     <h2>Contacts</h2>
 
-<ul>
     {% for contact in contacts %}
-        <li>
-            {{ contact[0] }}
-            -
-            {{ contact[1] }}
-            -
-            {{ contact[2] }}
-            -
-            {{ contact[3] }}
-        </li>
+        <div>
+    
+            <h3>{{ contact[0] }}</h3>
+    
+            <p>Email: {{ contact[1] }}</p>
+            <p>Phone: {{ contact[2] }}</p>
+            <p>Location: {{ contact[3] }}</p>
+            <p>Notes: {{ contact[4] }}</p>
+    
+            <hr>
+    
+        </div>
     {% endfor %}
-</ul>
 
 </body>
 
