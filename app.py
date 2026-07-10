@@ -1,14 +1,31 @@
 import csv
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CSV_FILE = os.path.join(BASE_DIR, "contacts.csv")
 
+
 @app.route("/")
 def home():
-    return render_template("index.html")
+
+    contacts = []
+
+    try:
+        with open(CSV_FILE, "r") as file:
+            reader = csv.reader(file)
+
+            for row in reader:
+                contacts.append(row)
+
+    except FileNotFoundError:
+        pass
+
+    return render_template(
+        "index.html",
+        contacts=contacts
+    )
 
 @app.route("/add", methods=["POST"])
 def add_contact():
@@ -31,7 +48,7 @@ def add_contact():
             notes
         ])
 
-    return "Contact Added"
+    return redirect("/")
 
 
 if __name__ == "__main__":

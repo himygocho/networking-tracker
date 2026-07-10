@@ -48,6 +48,22 @@
 
     </form>
 
+    <h2>Contacts</h2>
+
+<ul>
+    {% for contact in contacts %}
+        <li>
+            {{ contact[0] }}
+            -
+            {{ contact[1] }}
+            -
+            {{ contact[2] }}
+            -
+            {{ contact[3] }}
+        </li>
+    {% endfor %}
+</ul>
+
 </body>
 
 </html> 
